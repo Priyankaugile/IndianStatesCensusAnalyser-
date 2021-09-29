@@ -1,5 +1,5 @@
 import com.indianstatescensus.CustomizedExceptions;
-import com.indianstatescensus.IndianStateCensusAnalyzer;
+import com.main.IndianStateCensusAnalyzer;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -50,7 +50,7 @@ IndianStateCensusAnalyzerTest {
         String filePath = "C:\\Users\\HP\\Desktop\\BdzJAVA\\IndianStatesCensus\\src\\main\\java\\com\\indianstatescensus\\Files\\StateCensusData.csv";
         try {
             boolean result = id.delimiterChecker(filePath);
-            Assert.assertEquals(false, result);
+            Assert.assertFalse(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ IndianStateCensusAnalyzerTest {
         String filePath = "C:\\Users\\HP\\Desktop\\BdzJAVA\\IndianStatesCensus\\src\\main\\java\\com\\indianstatescensus\\Files\\StateCensusData.csv";
         try {
             boolean result = id.csvHeaderChecker(filePath);
-            Assert.assertEquals(false, result);
+            Assert.assertFalse(result);
         } catch (IOException | CustomizedExceptions e) {
             e.printStackTrace();
         }

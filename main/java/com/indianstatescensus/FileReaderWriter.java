@@ -16,23 +16,21 @@ public class FileReaderWriter {
     public int getTotalRecords(String filePath) throws CustomizedExceptions {
         AtomicBoolean firstLine = new AtomicBoolean(true);
         AtomicInteger count = new AtomicInteger();
-
         try {
             Files.lines(Paths.get(filePath))
                     .forEach(lines -> {
                         if (lines.startsWith("State")) {
                             firstLine.set(false);
-                        }
-                        else {
+                        } else {
                             lines.split("\n");
                             count.getAndIncrement();
                             System.out.println(lines);
                         }
+
                     });
             System.out.println("\nCount : " + count);
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new CustomizedExceptions("Enter Correct File Name");
         }
         return count.intValue();
@@ -46,8 +44,8 @@ public class FileReaderWriter {
             Pattern result = in.delimiter();
             System.out.println(result);
 
-            if(result.pattern().equals(";")) {
-            }
+            if(result.pattern().equals(";"))
+                flag = true;
             else {
                 flag = false;
                 throw new CustomizedExceptions("Enter Correct Delimeter in CSV File");
@@ -73,6 +71,6 @@ public class FileReaderWriter {
                 throw new CustomizedExceptions("Enter Correct CSV Headers");
             }
         }
-        return true;
-    }
+        return flag;
+     }
 }
